@@ -9,7 +9,13 @@ def Convert(string):
 clientID = '8fd6cc63-df9e-43dd-8b02-2de12ebca283'
 redirectURL = 'https://login.microsoftonline.com/common/oauth2/nativeclient'
 
-directory = 'A:\\launcher'
+try:
+    with open("data.txt","r") as data:
+        directory = data.read()
+except:
+    directory = input("Please input the launchers directory: ").replace("/", "//")
+    with open("data.txt","w") as data:
+        data.write(directory)
 
 version = input("What version do you want - Latest for the latest version: ")
 if version.capitalize() == "Latest":
